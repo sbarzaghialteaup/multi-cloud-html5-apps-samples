@@ -1,0 +1,30 @@
+{
+  "xsappname": "cap-service-northwind",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.can_use_capservicenorthwind",
+      "granted-apps": ["$XSAPPNAME(application,managed_fiori_app_sam)"],
+      "grant-as-authority-to-apps": [
+        "$XSAPPNAME(application, managed_fiori_app_sam)"
+      ]
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": ["uaa.user"]
+    },
+    {
+      "name": "Cap_Service",
+      "description": "Can use CAP service",
+      "scope-references": ["$XSAPPNAME.can_use_capservicenorthwind"]
+    }
+  ]
+}

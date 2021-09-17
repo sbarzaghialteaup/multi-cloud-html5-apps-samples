@@ -1,5 +1,5 @@
 {
-  "xsappname": "managed_fiori_app",
+  "xsappname": "managed_fiori_app_sam",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
   "scopes": [
@@ -7,6 +7,10 @@
       "name": "uaa.user",
       "description": "UAA"
     }
+  ],
+  "authorities":["$XSAPPNAME(application,cap-service-northwind).can_use_capservicenorthwind"],
+  "foreign-scope-references": [
+    "$XSAPPNAME(application,cap-service-northwind).can_use_capservicenorthwind"
   ],
   "role-templates": [
     {
